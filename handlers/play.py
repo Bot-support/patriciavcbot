@@ -107,7 +107,7 @@ async def play(_, message: Message):
                 [
                     InlineKeyboardButton(
                         text="🔊 Channel",
-                        url="https://t.me/Infinity_BOTs")
+                        url="https://t.me/Patricia_updates")
                    
                 ]
             ]
@@ -124,7 +124,7 @@ async def play(_, message: Message):
 
         file_name = get_file_name(audio)
         title = file_name
-        thumb_name = "https://telegra.ph/file/a4fa687ed647cfef52402.jpg"
+        thumb_name = "https://telegra.ph/file/a9026e966891fde0b8b3b.jpg"
         thumbnail = thumb_name
         duration = round(audio.duration / 60)
         views = "Locally added"
@@ -133,7 +133,7 @@ async def play(_, message: Message):
                     [
                         InlineKeyboardButton(
                             text="🔊 Channel",
-                            url=f"https://t.me/Infinity_BOTs")
+                            url=f"https://t.me/patricia_updates")
 
                     ]
                 ]
@@ -169,7 +169,7 @@ async def play(_, message: Message):
                 )
         except Exception as e:
             title = "NaN"
-            thumb_name = "https://telegra.ph/file/a4fa687ed647cfef52402.jpg"
+            thumb_name = "https://telegra.ph/file/a9026e966891fde0b8b3b.jpg"
             duration = "NaN"
             views = "NaN"
             keyboard = InlineKeyboardMarkup(
@@ -246,7 +246,7 @@ async def play(_, message: Message):
         await message.reply_photo(
         photo="final.png",
         reply_markup=keyboard,
-        caption="▶️ **Playing** here the song requested by {} via DaisyX Music 😜".format(
+        caption="▶️ **Playing** here the song requested by {} via patriciaXmusic 😜".format(
         message.from_user.mention()
         ),
     )
