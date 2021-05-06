@@ -41,7 +41,7 @@ A project by patricia's
                         "⚜️ Add To Your Group ⚜️", url="https://t.me/patriciaXmusic_bot?startgroup=true"
                     ),
                       InlineKeyboardButton(
-                        "⚜️mannual⚜️", url="https://telegra.ph/MANUAL-04-30-4"
+                        "⚜️mannual⚜️", url="https://t.me/Patricia_updates/9"
                     )
                 ]
             ]
