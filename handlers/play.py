@@ -98,7 +98,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
 @errors
 async def play(_, message: Message):
 
-    lel = await message.reply("🔄 **Processing** sounds...")
+    lel = await message.reply("🔥 **working** sounds...")
     sender_id = message.from_user.id
     sender_name = message.from_user.first_name
 
@@ -197,7 +197,7 @@ async def play(_, message: Message):
         for i in message.command[1:]:
             query += ' ' + str(i)
         print(query)
-        await lel.edit("🎵 **Processing** sounds...")
+        await lel.edit("🔥 **working** sounds...")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -246,7 +246,7 @@ async def play(_, message: Message):
         await message.reply_photo(
         photo="final.png",
         reply_markup=keyboard,
-        caption="▶️ **Playing** here the song requested by {} via patriciaXmusic 😜".format(
+        caption="🎸 **Playing** here the song requested by {} via patriciaXmusic 🎤".format(
         message.from_user.mention()
         ),
     )
