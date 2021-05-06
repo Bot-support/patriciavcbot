@@ -1,55 +1,103 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
-from config import BOT_NAME as bn
-from helpers.filters import other_filters2
 
 
-@Client.on_message(other_filters2)
-async def start(_, message: Message):
+@Client.on_message(
+    filters.command("start")
+    & filters.private
+    & ~ filters.edited
+)
+async def start_(client: Client, message: Message):
+    await message.reply_text(
+        f"""<b>Hi💘 {message.from_user.first_name}!
+\n⚜️I can play music in voice chats of Telegeam Groups. I have a lot of cool feature that will amaze you!
 
-      await message.reply_text(
-        f"""**Hey, I'm {bn} 🎵
+⚜️ Do you want me to play music in your Telegram groups'voice chats? Please click the '⚜️Manual ' button below to know how you can use me.
 
-I can play music in your group's voice call. Add me to your group for best song 
+⚜️ The Assistant must be in your group to play music in the voice chat of your group.
 
-Add me to your group and play music freely!**
-        """,
+⚜️ More info & commands mentioned in the MANUAL 
+
+A project by patricia's
+\nTo add in your group contact us at @patricia_support.
+\nHit /help list of available commands.
+ </b>""",
+      
+       
         reply_markup=InlineKeyboardMarkup(
             [
-                   [
-                    InlineKeyboardButton(
-                        "commands", url="https://t.me/Patricia_updates/9",
-                    )
-                 ],
-
-                   [
-                    InlineKeyboardButton(
-                        "💬 Group", url="https://t.me/Patricia_support"
-                    ),
-                    InlineKeyboardButton(
-                        "🔊 Channel", url="https://t.me/Patricia_updates"
-                    )
-                ],[ 
-                    InlineKeyboardButton(
-                        "➕ Add To Your Group ➕", url="https://t.me/patriciaXmusic_bot?startgroup=true"
-                    )]
-            ]
-        ),
-     disable_web_page_preview=True
-    )
-
-@Client.on_message(filters.command("start") & ~filters.private & ~filters.channel)
-async def gstart(_, message: Message):
-      await message.reply_text("""**Group Music Player Online ✅**""",
-      reply_markup=InlineKeyboardMarkup(
-            [
+                
                 [
                     InlineKeyboardButton(
-                        "🔊 Channel", url="https://t.me/Patricia_updates")
+                        "⚜️Support⚜️", url="https://t.me/patricia_support"
+                    ),
+                    InlineKeyboardButton(
+                        "🔊 Channel", url="https://t.me/patricia_updates"
+                    )        
+                     ],
+                [
+                    InlineKeyboardButton(
+                        "⚜️ Add To Your Group ⚜️", url="https://t.me/patriciaXmusic_bot?startgroup=true"
+                    ),
+                      InlineKeyboardButton(
+                        "⚜️mannual⚜️", url="https://telegra.ph/MANUAL-04-30-4"
+                    )
                 ]
             ]
         )
-   )
+    )
 
+@Client.on_message(
+    filters.command("start")
+    & filters.group
+    & ~ filters.edited
+)
+async def start(client: Client, message: Message):
+    await message.reply_text(
+        "💁🏻‍♂️ Do you want to search for a YouTube video?",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🔥 Channel", url="https://t.me/patricia_updates"
+                    )
+                ],    
+                [    
+                    InlineKeyboardButton(
+                        "✅ Yes", switch_inline_query_current_chat=""
+                    ),
+                    InlineKeyboardButton(
+                        "No ❌", callback_data="close"
+                    )
+                ]
+            ]
+        )
+    )
 
+@Client.on_message(
+    filters.command("help")
+    & filters.private
+    & ~ filters.edited
+)
+async def help(client: Client, message: Message):
+    await message.reply_text(
+        f"""<b>Hi {message.from_user.first_name}!
+\n/play <song name> - play song you requested
+/song <song name> - download songs you want quickly
+/pause - pause song play
+/resume - resume song play
+/skip - play next song
+/end - stop music play
+
+ </b>""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🔥 Channel", url="https://t.me/patricia_updates"
+                    )
+                ]
+            ]
+        )
+    )    
